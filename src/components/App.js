@@ -11,7 +11,8 @@ import Music from "./Music/Music";
 //Компонент рендярящий компонент
 let HightOrderComponent = () => <Profile />
 
-const App = () => {
+const App = (props) => {
+
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -22,7 +23,8 @@ const App = () => {
 
                 <div className='app-wrapper-content'>
                     {/* Можем сделать чтобы вызвался компонент в виде функции для передачи пропсов */}
-                    <Route path='/dialogs' render={ () => <Dialogs />} />
+                    {/*Получаем по пропсам данные*/}
+                    <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
                     {/* или так */}
                     <Route path='/profile' component={ HightOrderComponent } />
                     <Route path='/music' render={ () => <Music /> } />
