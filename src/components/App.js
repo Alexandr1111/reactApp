@@ -24,7 +24,7 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     {/* Можем сделать чтобы вызвался компонент в виде функции для передачи пропсов */}
                     {/*Получаем по пропсам данные*/}
-                    <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
+                    <Route path='/dialogs' render={ () => <Dialogs state={props.state} />} />
                     {/* или так */}
                     <Route path='/profile' component={ HightOrderComponent } />
                     <Route path='/music' render={ () => <Music /> } />
