@@ -12,8 +12,13 @@ let state = {
         {id:1, message:'Hi'},
         {id:2, message:'How are you?'},
         {id:3, message:'YO!'}
-    ]
+    ],
 
+    friendsData : [
+        {name: 'Sveta'},
+        {name: 'Yulia'},
+        {name: 'Vasya'}
+    ]
 }
 
 export default state;

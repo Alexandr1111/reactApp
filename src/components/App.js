@@ -19,7 +19,7 @@ const App = (props) => {
 
                 <Header/>
 
-                <NavBar/>
+                <NavBar state={props.state} />
 
                 <div className='app-wrapper-content'>
                     {/* Можем сделать чтобы вызвался компонент в виде функции для передачи пропсов */}
