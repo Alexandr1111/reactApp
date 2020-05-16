@@ -21,4 +21,15 @@ let state = {
     ]
 }
 
+//Если пишем экспорт без default, то импорт будет вида { Точное название экпортируемого }
+export let addPost = (postMassage) =>{
+//Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст
+    let newPost = {
+        id: 4,
+        message: postMassage
+    };
+
+    state.messagesData.push(newPost);
+}
+
 export default state;

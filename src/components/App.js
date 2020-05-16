@@ -4,12 +4,12 @@ import Header from "./Header/Header";
 import NavBar from "./NavBar/NavBar";
 import Dialogs from "./Dialogs/Dialogs";
 import Profile from "./Profile/MyPosts/Profile";
-import Route from "react-router-dom/es/Route";
+import { Route } from "react-router-dom";
 import {BrowserRouter} from "react-router-dom";
 import Music from "./Music/Music";
 
 //Компонент рендярящий компонент
-let HightOrderComponent = () => <Profile />
+//let HightOrderComponent = () => <Profile />
 
 const App = (props) => {
 
@@ -24,9 +24,9 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     {/* Можем сделать чтобы вызвался компонент в виде функции для передачи пропсов */}
                     {/*Получаем по пропсам данные*/}
-                    <Route path='/dialogs' render={ () => <Dialogs state={props.state} />} />
+                    <Route path='/dialogs' render={ () => <Dialogs state={props.state} addPost={props.addPost} />} />
                     {/* или так */}
-                    <Route path='/profile' component={ HightOrderComponent } />
+                    <Route path='/profile' render={ () => <Profile state={props.state} addPost={props.addPost} />} />
                     <Route path='/music' render={ () => <Music /> } />
                 </div>
 
