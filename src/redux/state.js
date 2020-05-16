@@ -1,3 +1,4 @@
+import { rerenderTree } from "../render";
 
 let state = {
 
@@ -21,6 +22,7 @@ let state = {
     ]
 }
 
+
 //Если пишем экспорт без default, то импорт будет вида { Точное название экпортируемого }
 export let addPost = (postMassage) =>{
 //Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст
@@ -30,6 +32,7 @@ export let addPost = (postMassage) =>{
     };
 
     state.messagesData.push(newPost);
+    rerenderTree(state);
 }
 
 export default state;

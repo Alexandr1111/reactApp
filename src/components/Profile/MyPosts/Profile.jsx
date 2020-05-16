@@ -2,6 +2,7 @@ import React from "react";
 import s from './Profile.module.css';
 import Post from "./Post/Post";
 
+
 const Profile = (props) => {
 
     //Создаем ссылку на какой-то элемент
@@ -11,21 +12,22 @@ const Profile = (props) => {
         let text = newPostElement.current.value;//Берем значение поля textarea
         //alert(text);
         props.addPost(text);
+        newPostElement.current.value = '';
     }
 
+    let postsElements = props.state.messagesData.map( m => <Post message={m.message} id={m.id} />);
 
     return(
         <div>
             My posts
             <div className={s.posts}>
-                <Post message='It is my first post' likes='15' />
-                <Post message='Hi, how are you?' likes='20' />
-                <Post />
-                <Post />
+
+                { postsElements }
+
             </div>
             <div>
                 {/*Говорим что ссылка привязвается сюда*/}
-                <textarea ref={ newPostElement }></textarea>
+                <textarea ref={newPostElement}/>
             </div>
             <div>
                 <button onClick={ addPost }>Add post</button>

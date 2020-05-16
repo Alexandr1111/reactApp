@@ -42,6 +42,7 @@ const Dialogs = (props) => {
         let text = messageRef.current.value;
         //alert(text);
         props.addPost(text);
+        messageRef.current.value = '';//Зануляем поле после добавления поста
     }
 
 
@@ -62,7 +63,7 @@ const Dialogs = (props) => {
             </div>
 
             <div>
-                <textarea ref={ messageRef }></textarea>
+                <textarea ref={messageRef}/>
             </div>
             <div>
                 <button className={ s.forBtn } onClick={ addMessage } > add post </button>
