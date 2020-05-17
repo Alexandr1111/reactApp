@@ -1,4 +1,5 @@
-import { rerenderTree } from "../render";
+let rerenderTree = () => {
+}
 
 let state = {
 
@@ -24,7 +25,7 @@ let state = {
 
 
 //Если пишем экспорт без default, то импорт будет вида { Точное название экпортируемого }
-export let addPost = (postMassage) =>{
+export const addPost = (postMassage) =>{
 //Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст
     let newPost = {
         id: 4,
@@ -32,7 +33,12 @@ export let addPost = (postMassage) =>{
     };
 
     state.messagesData.push(newPost);
-    rerenderTree(state);
+    rerenderTree();
+}
+
+//наблюдатель наблюдает за объектом и коггда с объектом что-то происходит он уведомляется
+export const subscribe = (observer) => {
+    rerenderTree = observer;
 }
 
 export default state;
