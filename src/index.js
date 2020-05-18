@@ -8,7 +8,8 @@ let rerenderTree = () => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App state = { store.getState() } addPost = { store.addPost.bind(store) } />
+            {/*Передаем сразу все методы из state.js дальше*/}
+            <App state = { store.getState() } dispatch = { store.dispatch.bind(store) } />
         </BrowserRouter>, document.getElementById('root')
     );
 

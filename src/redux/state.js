@@ -24,25 +24,32 @@ let store = {
     getState(){
         return this._state;
     },
-    _callSubscriber () {
-
-    },
-    //Если пишем экспорт без default, то импорт будет вида { Точное название экпортируемого }
-    addPost (postMassage) {
-    //Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст
-        let newPost = {
-            id: 4,
-            message: postMassage
-        };
-
-        this._state.messagesData.push(newPost);
-        this._callSubscriber(this._state);
-    },
     //наблюдатель наблюдает за объектом и когда с объектом что-то происходит он уведомляется
     subscribe (observer) {
         this._callSubscriber = observer;
-    }
+    },
+    _callSubscriber () {
 
+    },
+
+    //что бы вы не хотели поменять внутри стора исп метод dispatch
+    //action - это объект, будет текстовое свойство type: 'что нужно сделать'
+    //меняет state
+
+    dispatch(action){
+
+        if (action.type === 'ADD-POST'){
+                //Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст
+                let newPost = {
+                    id: 4,
+                    message: action.postMessage
+                };
+
+                this._state.messagesData.push(newPost);
+                this._callSubscriber(this._state);
+        }
+
+    }
 
 }
 

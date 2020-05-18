@@ -41,7 +41,7 @@ const Dialogs = (props) => {
     let addMessage = () => {
         let text = messageRef.current.value;
         //alert(text);
-        props.addPost(text);
+        props.dispatch({ type : 'ADD-POST', postMessage : text});//Получаем по пропсам dispatch, выбираем ключевое слово метода и его параметры если есть
         messageRef.current.value = '';//Зануляем поле после добавления поста
     }
 

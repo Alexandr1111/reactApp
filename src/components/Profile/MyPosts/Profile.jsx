@@ -11,7 +11,7 @@ const Profile = (props) => {
     let addPost = () => {
         let text = newPostElement.current.value;//Берем значение поля textarea
         //alert(text);
-        props.addPost(text);
+        props.dispatch({ type : 'ADD-POST', postMessage:text });
         newPostElement.current.value = '';
     }
 
