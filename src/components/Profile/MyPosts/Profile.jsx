@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Profile.module.css';
 import Post from "./Post/Post";
+import {addPostActionCreator} from "../../../redux/state";
 
 
 const Profile = (props) => {
@@ -10,8 +11,9 @@ const Profile = (props) => {
 
     let addPost = () => {
         let text = newPostElement.current.value;//Берем значение поля textarea
-        //alert(text);
-        props.dispatch({ type : 'ADD-POST', postMessage:text });
+        //props.dispatch({ type : 'ADD-POST', postMessage:text });
+        let action = addPostActionCreator(text);
+        props.dispatch(action);
         newPostElement.current.value = '';
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
+import {addPostActionCreator} from "../../redux/state";
 
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
@@ -41,7 +42,8 @@ const Dialogs = (props) => {
     let addMessage = () => {
         let text = messageRef.current.value;
         //alert(text);
-        props.dispatch({ type : 'ADD-POST', postMessage : text});//Получаем по пропсам dispatch, выбираем ключевое слово метода и его параметры если есть
+        let action = addPostActionCreator(text);
+        props.dispatch(action);//Получаем по пропсам dispatch, выбираем ключевое слово метода и его параметры если есть
         messageRef.current.value = '';//Зануляем поле после добавления поста
     }
 
