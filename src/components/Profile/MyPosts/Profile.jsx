@@ -17,7 +17,7 @@ const Profile = (props) => {
         newPostElement.current.value = '';
     }
 
-    let postsElements = props.state.messagesData.map( m => <Post message={m.message} id={m.id} />);
+    let postsElements = props.state.profilePostsData.map( m => <Post message={m.message} likes={m.likes} />);
 
     return(
         <div>

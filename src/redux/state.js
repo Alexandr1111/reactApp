@@ -1,5 +1,6 @@
 //action types
 const ADD_POST = 'ADD-POST';
+const ADD_DIALOG = 'ADD-DIALOG';
 
 let store = {
 
@@ -16,6 +17,12 @@ let store = {
             {id:1, message:'Hi'},
             {id:2, message:'How are you?'},
             {id:3, message:'YO!'}
+        ],
+
+        profilePostsData : [
+            {message:'HELLO', likes: 0},
+            {message:'Hi', likes: 10},
+            {message:'OK!', likes: 20}
         ],
 
         friendsData : [
@@ -44,12 +51,21 @@ let store = {
         if (action.type === ADD_POST){
                 //Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст
                 let newPost = {
+                    message: action.postMessage,
+                    likes: 0
+                };
+
+                this._state.profilePostsData.push(newPost);
+                this._callSubscriber(this._state);
+        }
+        else if (action.type === ADD_DIALOG){
+                let newPost = {
                     id: 4,
                     message: action.postMessage
                 };
 
-                this._state.messagesData.push(newPost);
-                this._callSubscriber(this._state);
+            this._state.messagesData.push(newPost);
+            this._callSubscriber(this._state);
         }
 
     }
@@ -61,6 +77,13 @@ let store = {
 export const addPostActionCreator = (text) => {
     return {
         type: ADD_POST,
+        postMessage: text
+    }
+}
+
+export const addDialogActionCreator = (text) => {
+    return {
+        type: ADD_DIALOG,
         postMessage: text
     }
 }
