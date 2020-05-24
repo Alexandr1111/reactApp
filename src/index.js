@@ -14,7 +14,7 @@ let rerenderTree = () => {
     );
 
 }
-
+///
 
 rerenderTree(store.getState());//Нужен для первоначального рендера проекта просто
 
