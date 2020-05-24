@@ -1,6 +1,5 @@
-//action types
-const ADD_POST = 'ADD-POST';
-const ADD_DIALOG = 'ADD-DIALOG';
+import profileReducer from "./ProfileReducer/Profile_reducer";
+import dialogsReducer from "./DialogsReducer/Dialogs_reducer";
 
 let store = {
 
@@ -48,45 +47,14 @@ let store = {
 
     dispatch(action){
 
-        if (action.type === ADD_POST){
-                //Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст
-                let newPost = {
-                    message: action.postMessage,
-                    likes: 0
-                };
+        this._state.profilePostsData = profileReducer(this._state.profilePostsData, action);
 
-                this._state.profilePostsData.push(newPost);
-                this._callSubscriber(this._state);
-        }
-        else if (action.type === ADD_DIALOG){
-                let newPost = {
-                    id: 4,
-                    message: action.postMessage
-                };
+        this._state.messagesData = dialogsReducer(this._state.messagesData, action);
 
-            this._state.messagesData.push(newPost);
-            this._callSubscriber(this._state);
-        }
+        this._callSubscriber(this._state);
 
     }
 
 }
-
-
-//Не прокидываем по пропсам, т.к. это по-сути просто утилита
-export const addPostActionCreator = (text) => {
-    return {
-        type: ADD_POST,
-        postMessage: text
-    }
-}
-
-export const addDialogActionCreator = (text) => {
-    return {
-        type: ADD_DIALOG,
-        postMessage: text
-    }
-}
-
 
 export default store;
