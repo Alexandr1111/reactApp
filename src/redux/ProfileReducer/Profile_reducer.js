@@ -1,7 +1,15 @@
 const ADD_POST = 'ADD-POST';
 
+let initialState = {
+    profilePostsData : [
+        {message:'HELLO', likes: 0},
+        {message:'Hi', likes: 10},
+        {message:'OK!', likes: 20}
+    ]
+};
+
 //reducer это функция, которая получает экшен и нужную часть стейта
-const profileReducer = (state, action) => {
+const profileReducer = (state = initialState, action) => {
 
     if (action.type === ADD_POST){
         //Принимаем текст и пушим его в массив MessagesData под ключом id: 5 и message: полученный текст

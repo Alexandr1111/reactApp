@@ -1,6 +1,15 @@
 const ADD_DIALOG = 'ADD-DIALOG';
 
-const dialogsReducer = (state, action) => {
+
+let initialState = {
+    messagesData : [
+        {id:1, message:'Hi'},
+        {id:2, message:'How are you?'},
+        {id:3, message:'YO!'}
+    ]
+};
+
+const dialogsReducer = (state = initialState, action) => {
 
     if (action.type === ADD_DIALOG){
         let newPost = {

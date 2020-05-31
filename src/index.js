@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./components/App";
-import store from "./redux/state";
+import store from "./redux/reduxStore";
 
 let rerenderTree = () => {
 
@@ -18,4 +18,9 @@ let rerenderTree = () => {
 
 rerenderTree(store.getState());//Нужен для первоначального рендера проекта просто
 
-store.subscribe(rerenderTree);//Обсервер обновляет проект когда тот изменяется
+store.subscribe(()=>{
+    let state = store.getState();
+   rerenderTree(state);
+});
+
+//store.subscribe(rerenderTree);//Обсервер обновляет проект когда тот изменяется
