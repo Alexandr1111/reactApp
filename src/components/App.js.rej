@@ -1,0 +1,10 @@
+diff a/src/components/App.js b/src/components/App.js	(rejected hunks)
+@@ -19,7 +19,7 @@
+ 
+                 <Header/>
+ 
+-                <NavBar/>
++                <NavBar state={props.state} />
+ 
+                 <div className='app-wrapper-content'>
+                     {/* Можем сделать чтобы вызвался компонент в виде функции для передачи пропсов */}
